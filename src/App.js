@@ -1,17 +1,28 @@
 import "./App.css";
-import Emoji from "./components/compositions/Emoji";
-import Text from "./components/compositions/Text";
-import Brackets from "./components/compositions/Brackets";
-
+import ClickCounter from "./components/RenderCounter/ClickCounter";
+import HoverCount from "./components/RenderCounter/HoverCounter";
+import Counter from "./components/RenderCounter/user";
 function App() {
-  return <Emoji>
-    {({addemoji}) =>
-    <Brackets>
-    {({addbrackets})=> 
-    <Text addemoji={addemoji} addbrackets={addbrackets}/>}
-    </Brackets>
-    }
-  </Emoji>
+  return (
+    <div>
+      <Counter>
+        {(renderCounter, renderincrementCount) => (
+          <ClickCounter
+            counter={renderCounter}
+            incrementCount={renderincrementCount}
+          />
+        )}
+      </Counter>
+      <Counter>
+        {(renderCounter, renderincrementCount) => (
+          <HoverCount
+            counter={renderCounter}
+            incrementCount={renderincrementCount}
+          />
+        )}
+      </Counter>
+    </div>
+  );
 }
 
 export default App;
